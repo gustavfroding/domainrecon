@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="domainrecon",
-    version="0.2.0",
+    version="0.2.5",
     description="CLI-verktyg för att kartlägga teknikstack för domäner",
     author="Ditt Namn",
     license="MIT",
@@ -13,7 +13,7 @@ setup(
         "dnspython",
         "ipwhois",
         "aiohttp",
-        "bs4",
+        "bs4"
     ],
     entry_points={
         "console_scripts": [
