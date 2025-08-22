@@ -23,7 +23,7 @@ async def get_dns_info(domain):
         for r in a_records:
             ip = r.to_text()
             ip, asn, org = await resolve_asn(ip)
-            print(f"  {ip} (ASN: {asn}, Org: {org})")
+            print(f"  {ip} (ASN: {asn or '-'}, Org: {org or '-'})")
     except Exception as e:
         print(f"[red]No A records found:[/red] {e}")
 
@@ -39,7 +39,7 @@ async def get_dns_info(domain):
                 if mx_a_records:
                     ip = mx_a_records[0].to_text()
                     ip, asn, org = await resolve_asn(ip)
-                    print(f"    {ip} (ASN: {asn}, Org: {org})")
+                    print(f"    {ip} (ASN: {asn or '-'}, Org: {org or '-'})")
             except Exception as e:
                 print(f"    [red]Could not resolve A record for {mx_host}:[/red] {e}")
     except Exception as e:

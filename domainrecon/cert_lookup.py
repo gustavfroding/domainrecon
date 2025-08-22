@@ -52,7 +52,17 @@ async def get_cert_subdomains(domain):
                 ip = a_records[0].to_text()
                 ip, asn, org = await resolve_asn(ip)
                 https_ok, status, server, powered_by, tech = await inspect_https_site(sub)
-                table.add_row(sub, ip, asn or "-",  org or "-",  "✅" if https_ok else "❌", str(status), server or "-", powered_by or "-", tech or "-")
+                table.add_row(
+                    sub,
+                    ip,
+                    asn or "-",
+                    org or "-",
+                    "✅" if https_ok else "❌",
+                    str(status) if status is not None else "-",
+                    server or "-",
+                    powered_by or "-",
+                    tech or "-",
+                )
             except Exception as e:
                 table.add_row(sub, "-", "-", "-", "-", "-", "-", "-", f"SSL fel: {e}")
 
